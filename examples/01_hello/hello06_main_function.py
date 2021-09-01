@@ -10,6 +10,6 @@ def main():
     args = parser.parse_args()
     print('Hello, ' + args.name + '!')
 
-if __name__ == '__main__': # '__name__' is namespace, not related to function name.
-    # name is where program starts. this is needed when you start using your code as a module and import into another python program
+
+if __name__ == '__main__':
     main()
