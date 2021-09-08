@@ -27,6 +27,13 @@ def get_args():
                         type=str,
                         default='')
 
+    parser.add_argument('-g',
+                        '--greeting',
+                        help='A named string argument',
+                        metavar='str',
+                        type=str,
+                        default='')
+
     parser.add_argument('-i',
                         '--int',
                         help='A named integer argument',
