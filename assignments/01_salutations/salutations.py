@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 Author : RoxanneB <RoxanneB@localhost>
-Date   : 2021-09-01
-Purpose: Print greeting
+Date   : 2021-09-08
+Purpose: Rock the Casbah
 """
 
 import argparse
@@ -13,44 +13,28 @@ def get_args():
     """Get command-line arguments"""
 
     parser = argparse.ArgumentParser(
-        description='Print greeting',
+        description='Rock the Casbah',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument('positional',
-                        metavar='str',
-                        help='A positional argument')
-
-    parser.add_argument('-a',
-                        '--arg',
-                        help='A named string argument',
-                        metavar='str',
-                        type=str,
-                        default='')
 
     parser.add_argument('-g',
                         '--greeting',
-                        help='A named string argument',
+                        help='The greeting',
                         metavar='str',
                         type=str,
-                        default='')
+                        default='Howdy')
 
-    parser.add_argument('-i',
-                        '--int',
-                        help='A named integer argument',
-                        metavar='int',
-                        type=int,
-                        default=0)
+    parser.add_argument('-n',
+                        '--name',
+                        help='Whom to greet',
+                        metavar='str',
+                        type=str,
+                        default='Stranger')
 
-    parser.add_argument('-f',
-                        '--file',
-                        help='A readable file',
-                        metavar='FILE',
-                        type=argparse.FileType('rt'),
-                        default=None)
 
-    parser.add_argument('-o',
-                        '--on',
-                        help='A boolean flag',
+    parser.add_argument('-e',
+                        '--excited',
+                        help='Include an exclamation point',
                         action='store_true')
 
     return parser.parse_args()
@@ -61,17 +45,9 @@ def main():
     """Make a jazz noise here"""
 
     args = get_args()
-    str_arg = args.arg
-    int_arg = args.int
-    file_arg = args.file
-    flag_arg = args.on
-    pos_arg = args.positional
+    ending = '!' if args.excited else '.'
+    print(args.greeting + ', ' + args.name + ending)
 
-    print(f'str_arg = "{str_arg}"')
-    print(f'int_arg = "{int_arg}"')
-    print('file_arg = "{}"'.format(file_arg.name if file_arg else ''))
-    print(f'flag_arg = "{flag_arg}"')
-    print(f'positional = "{pos_arg}"')
 
 
 # --------------------------------------------------
