@@ -41,10 +41,11 @@ def main():
     lnum_flag = args.number
 
     for fh in file_in:
-        current_file = fh.readlines()
-        for count, line in enumerate(current_file, start=1):
+        # current_file = fh.readlines()
+        for count, line in enumerate(fh, start=1):
             if lnum_flag:
-                print_format = "     {}\t{}"
+                print_format = "{:>6}\t{}"
+                # {:>6}\t{} right justified in field 6 chars wide
                 print(print_format.format(count, line), end='')
             else:
                 print(line, end='')
