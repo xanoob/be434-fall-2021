@@ -18,7 +18,7 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('file_in',
-                        nargs='+',
+                        # nargs='+',
                         help='A readable file',
                         metavar='FILE',
                         type=argparse.FileType('rt'),
@@ -38,6 +38,7 @@ def main():
 
     args = get_args()
     file_in = args.file_in
+    print(type(file_in))
     lnum_flag = args.number
 
     for fh in file_in:

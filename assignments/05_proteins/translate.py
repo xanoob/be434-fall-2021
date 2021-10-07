@@ -26,7 +26,7 @@ def get_args():
                         help='A readable file',
                         metavar='FILE',
                         type=argparse.FileType('rt'),
-                        default=None,
+                        # default=None, -- no default if specifying required
                         required=True)
 
     parser.add_argument('-o',
