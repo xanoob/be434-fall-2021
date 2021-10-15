@@ -78,10 +78,13 @@ def main():
     infile1_ls = rm_punctuation([word.lower() for word in lines_to_list(args.infile1)])
     infile2_ls = rm_punctuation([word.lower() for word in lines_to_list(args.infile2)])
 
-    file_intersect = sorted(list(set(infile1_ls).intersection(infile2_ls)))
+    for words in infile1_ls, infile2_ls:
+        print(words)
 
-    for word in file_intersect:
-        print(word, file=args.outfile)
+    # file_intersect = sorted(list(set(infile1_ls).intersection(infile2_ls)))
+    #
+    # # for word in file_intersect:
+    # #     print(word, file=args.outfile)
 
 # --------------------------------------------------
 
