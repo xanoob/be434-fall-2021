@@ -36,7 +36,7 @@ def get_args():
 
 # --------------------------------------------------
 def main():
-    """Make a jazz noise here"""
+    """Make a pinniped noise here"""
 
     args = get_args()
 
