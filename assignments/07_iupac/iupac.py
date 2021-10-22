@@ -2,7 +2,7 @@
 """
 Author : RoxanneB <RoxanneB@localhost>
 Date   : 2021-10-14
-Purpose: Rock the Casbah
+Purpose: IUPAC to regex
 """
 
 import argparse

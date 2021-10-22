@@ -99,7 +99,7 @@ def main():
 
         for k, v in dist_dict.items():
             if k <= args.distance:
-                print(flatlist(v))
+                print(flatlist(v), file=args.outfile)
 
     else:
         file_intersect = sorted(list(set(infile1_ls).intersection(infile2_ls)))
