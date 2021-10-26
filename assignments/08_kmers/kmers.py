@@ -68,9 +68,7 @@ def main():
 def get_kmer_freq(inlist, k):
     """ Returns dictionary with frequency of k-mers given a list """
 
-    kmer_list = []
-    for word in inlist:
-        kmer_list.append((find_kmers(word, k)))
+    kmer_list = [find_kmers(word, k) for word in inlist]
 
     return dict(collections.Counter(flatlist(kmer_list)))
 
