@@ -2,11 +2,10 @@
 """
 Author : RoxanneB <RoxanneB@localhost>
 Date   : 2021-10-26
-Purpose: Rock the Casbah
+Purpose: Find common k-mers between two files
 """
 
 import argparse
-import string
 import collections
 
 # --------------------------------------------------
@@ -16,7 +15,7 @@ def get_args():
     """Get command-line arguments"""
 
     parser = argparse.ArgumentParser(
-        description='Rock the Casbah',
+        description='Find common k-mers',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('-k',
@@ -61,7 +60,8 @@ def main():
     key_shared = list(set(file1_kdict.keys()).intersection(file2_kdict.keys()))
 
     for key in key_shared:
-        print(f'{key:10} {file1_kdict[key]:5} {file2_kdict[key]:5}')
+        print(f'{key:10} {file1_kdict.get(key):5} {file2_kdict.get(key):5}')
+
 # --------------------------------------------------
 
 
@@ -80,17 +80,6 @@ def find_kmers(seq, k):
     return [] if n < 1 else [seq[i:i + k] for i in range(n)]
 
 
-def test_find_kmers():
-    """ Test find_kmers """
-
-    assert find_kmers('', 1) == []
-    assert find_kmers('ACTG', 1) == ['A', 'C', 'T', 'G']
-    assert find_kmers('ACTG', 2) == ['AC', 'CT', 'TG']
-    assert find_kmers('ACTG', 3) == ['ACT', 'CTG']
-    assert find_kmers('ACTG', 4) == ['ACTG']
-    assert find_kmers('ACTG', 5) == []
-
-
 def flatlist(nested_list):
     """ flattens nested list """
 
@@ -105,15 +94,6 @@ def lines_to_list(infile):
     flat_list = flatlist(nested_list)
     return flat_list
 
-
-def rm_punctuation(ls_in):
-    """ rm punctuations in list of str, requires str module  """
-
-    rmp = []
-    for item in ls_in:
-        rmp.append(item.translate(str.maketrans('', '', string.punctuation)))
-
-    return rmp
 
 # --------------------------------------------------
 
