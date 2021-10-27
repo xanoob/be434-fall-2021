@@ -60,7 +60,7 @@ def main():
     key_shared = list(set(file1_kdict.keys()).intersection(file2_kdict.keys()))
 
     for key in key_shared:
-        print(f'{key:10} {file1_kdict.get(key):5} {file2_kdict.get(key):5}')
+        print(f'{key:10}{file1_kdict.get(key):6}{file2_kdict.get(key):6}')
 
 # --------------------------------------------------
 
