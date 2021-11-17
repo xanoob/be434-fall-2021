@@ -38,8 +38,8 @@ def main():
     args = get_args()
 
     for seq in args.str.splitlines():
-        line_ls = rle(seq)
-        rle_printer(line_ls)
+        rle(seq)
+        # rle_printer(line_ls)
 
 
 # --------------------------------------------------
@@ -64,7 +64,7 @@ def rle(seq):
             prev = letter
             count = 1
 
-    return line_ls
+    rle_printer(line_ls)
 
 
 def rle_printer(line_ls):
