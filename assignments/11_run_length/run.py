@@ -2,7 +2,7 @@
 """
 Author : RoxanneB <RoxanneB@localhost>
 Date   : 2021-11-16
-Purpose: Run Length Encoding of sequences in a line
+Purpose: RLE of sequences
 """
 
 import argparse
@@ -14,7 +14,7 @@ def get_args():
     """Get command-line arguments"""
 
     parser = argparse.ArgumentParser(
-        description='Rock the Casbah',
+        description='RLE of sequences',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('str',
@@ -39,7 +39,7 @@ def main():
 
     for seq in args.str.splitlines():
         rle(seq)
-        # rle_printer(line_ls)
+
 
 
 # --------------------------------------------------
@@ -76,6 +76,7 @@ def rle_printer(line_ls):
             pair[1] = ''
         pair_ls.append(''.join(map(str, pair)))
     print(''.join(map(str, pair_ls)))
+
 
 # --------------------------------------------------
 
