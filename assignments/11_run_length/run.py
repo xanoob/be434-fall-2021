@@ -2,7 +2,7 @@
 """
 Author : RoxanneB <RoxanneB@localhost>
 Date   : 2021-11-16
-Purpose: Rock the Casbah
+Purpose: Run Length Encoding of sequences in a line
 """
 
 import argparse
@@ -24,78 +24,61 @@ def get_args():
     args = parser.parse_args()
 
     if os.path.isfile(args.str):
-        args.str = open(args.str, 'rt').read()
+        with open(args.str, 'rt', encoding='utf-8') as in_f:
+            args.str = in_f.read()
 
     return args
 
 # --------------------------------------------------
+
+
 def main():
-    """Make a jazz noise here"""
+    """Print RLE sequences"""
 
     args = get_args()
 
-    test_ls = []
     for seq in args.str.splitlines():
-        line_ls = []
-        seq = seq + "." # indicate end of line
-        prev = "none"
-        count = 1
-        for letter in seq:
-            # print("current", letter)
-            # print("previous", prev)
-            if prev == "none": # start of line
-                prev = letter
-                # print("start", letter, count)
-            elif letter == prev: # current letter same as previous
-                count += 1
-                # print("same", letter, count)
-            elif letter == "." : # reached end of line
-                # print(prev, count)
-                line_ls.append([prev,count])
-            else: # current letter different from previous
-                line_ls.append([prev,count])
-                prev = letter
-                count = 1
+        line_ls = rle(seq)
+        rle_printer(line_ls)
 
-        pair_ls = []
-        for pair in line_ls:
-            if pair[1] == 1:
-                pair[1] = ''
-            pair_ls.append(''.join(map(str, pair)))
 
-        print(''.join(map(str, pair_ls)))
-
-    # mainl = []
-    # print(test_ls)
-    # for inl in test_ls:
-    #     if inl[1] == 1:
-    #         inl[1] = ''
-    #     mainl.append(''.join(map(str, inl)))
-    #
-    # # print(mainl)
-    #
-    # print(''.join(map(str, mainl)))
 # --------------------------------------------------
 
-def rle(seq):
-    """ Create RLE """
-    prev = str()
-    count = 0
 
+def rle(seq):
+    """ for each line generate letter, value RLE pair """
+
+    line_ls = []
+    seq = seq + "."  # indicate end of line
+    prev = "none"
+    count = 1
     for letter in seq:
-        print("current", letter)
-        print("previous", prev)
-        if prev == "none": # start of line
+        if prev == "none":  # start of line
             prev = letter
-            # print("start", letter, count)
-        elif letter == prev: # current letter same as previous
+        elif letter == prev:  # current letter same as previous
             count += 1
-            # print("same", letter, count)
-        else: # current letter different than previous
-            print("new letter", letter, count)
+        elif letter == ".":  # reached end of line
+            line_ls.append([prev, count])
+        else:  # current letter different from previous
+            line_ls.append([prev, count])
             prev = letter
             count = 1
 
+    return line_ls
+
+
+def rle_printer(line_ls):
+    """take list of letter, count pairs from RLE and print"""
+
+    pair_ls = []
+    for pair in line_ls:
+        if pair[1] == 1:
+            pair[1] = ''
+        pair_ls.append(''.join(map(str, pair)))
+    print(''.join(map(str, pair_ls)))
+
 # --------------------------------------------------
+
+
 if __name__ == '__main__':
     main()
