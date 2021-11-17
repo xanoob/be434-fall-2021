@@ -36,6 +36,7 @@ def main():
 
     test_ls = []
     for seq in args.str.splitlines():
+        line_ls = []
         seq = seq + "." # indicate end of line
         prev = "none"
         count = 1
@@ -50,21 +51,30 @@ def main():
                 # print("same", letter, count)
             elif letter == "." : # reached end of line
                 # print(prev, count)
-                test_ls.append([prev,count])
+                line_ls.append([prev,count])
             else: # current letter different from previous
-                test_ls.append([prev,count])
+                line_ls.append([prev,count])
                 prev = letter
                 count = 1
 
-    mainl = []
-    for inl in test_ls:
-        if inl[1] == 1:
-            inl[1] = ''
-        mainl.append(''.join(map(str, inl)))
+        pair_ls = []
+        for pair in line_ls:
+            if pair[1] == 1:
+                pair[1] = ''
+            pair_ls.append(''.join(map(str, pair)))
 
-    print(mainl)
+        print(''.join(map(str, pair_ls)))
 
-    print(''.join(map(str, mainl)))
+    # mainl = []
+    # print(test_ls)
+    # for inl in test_ls:
+    #     if inl[1] == 1:
+    #         inl[1] = ''
+    #     mainl.append(''.join(map(str, inl)))
+    #
+    # # print(mainl)
+    #
+    # print(''.join(map(str, mainl)))
 # --------------------------------------------------
 
 def rle(seq):
