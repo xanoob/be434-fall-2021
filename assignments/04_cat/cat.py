@@ -18,8 +18,8 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('file_in',
-                        # nargs='+',
-                        help='A readable file',
+                        nargs='+',
+                        help='Input file',
                         metavar='FILE',
                         type=argparse.FileType('rt'),
                         default=None)
@@ -38,20 +38,17 @@ def main():
 
     args = get_args()
     file_in = args.file_in
-    print(type(file_in))
-    lnum_flag = args.number
 
     for fh in file_in:
-        # current_file = fh.readlines()
         for count, line in enumerate(fh, start=1):
-            if lnum_flag:
+            if args.number:
                 print_format = "{:>6}\t{}"
-                # {:>6}\t{} right justified in field 6 chars wide
-                print(print_format.format(count, line), end='')
+                print(print_format.format(count, line.rstrip()))
             else:
-                print(line, end='')
-
+                print(line.rstrip())
 
 # --------------------------------------------------
+
+
 if __name__ == '__main__':
     main()
